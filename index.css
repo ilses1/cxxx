@@ -1,0 +1,10 @@
+#game-board {
+	border: 1px solid black;
+	display: inline-block;
+}
+
+#score {
+	display: inline-block;
+	margin-left: 20px;
+	font-size: 24px;
+}

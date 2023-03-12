@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>猜数字小游戏</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			background-color: #f7f7f7;
+		}
+		h1 {
+			margin-top: 0;
+		}
+		p {
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		input[type="text"] {
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 20px;
+			width: 50%;
+			box-sizing: border-box;
+			font-size: 16px;
+		}
+		input[type="submit"] {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			font-size: 16px;
+			font-weight: bold;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		input[type="submit"]:hover {
+			background-color: #444;
+		}
+	</style>
+</head>
+<body>
+	<h1>猜数字小游戏</h1>
+	<p>我想了一个1到100之间的随机数字，请猜猜看是多少：</p>
+	<form>
+		<input type="text" id="guess" placeholder="请输入您的猜测">
+		<br>
+		<input type="submit" value="猜一下">
+	</form>
+	<script>
+		// 生成1到100之间的随机整数
+		var secretNumber = Math.floor(Math.random() * 100) + 1;
+
+		// 获取猜测输入框和提交按钮
+		var guessInput = document.getElementById("guess");
+		var guessSubmit = document.querySelector("input[type='submit']");
+
+		// 监听提交按钮的点击事件
+		guessSubmit.addEventListener("click", function(event) {
+			event.preventDefault(); // 阻止默认表单提交行为
+
+			// 获取用户输入的猜测数字
+			var guess = parseInt(guessInput.value);
+
+			// 检查猜测数字是否正确，并给出相应提示
+			if (guess === secretNumber) {
+				alert("恭喜您猜对了！");
+				// 重新生成一个新的随机数字
+				secretNumber = Math.floor(Math.random() * 100) + 1;
+			} else if (guess < secretNumber) {
+				alert("太小了，再试试吧。");
+			} else {
+				alert("太大了，再试试吧。");
+			}
+
+			// 清空输入框
+			guessInput.value = "";
+		});
+	</script>
+</body>
+</html>
